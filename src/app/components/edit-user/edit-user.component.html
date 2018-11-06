@@ -2,16 +2,19 @@
 <h2 class="text-center" *ngIf="type==='update'">{{ 'APP.EDIT-USER.TITLE' | translate}}</h2>
 <h2 class="text-center" *ngIf="type==='detail'">{{ 'APP.EDIT-USER.TITLEDETAIL' | translate}}</h2>
 <ng-container *ngIf="user; else spinner">
-    <div class="ui-g">
-      <div class="ui-g-4">
-      <div class="form-group">
-        <label for="name">{{ 'APP.GLOBAL.NAME' | translate}}</label>
-        <input type="text" autocomplete="false" placeholder="{{ 'APP.GLOBAL.NAME' | translate}}" name="name"
-          [(ngModel)]="user.name" class="form-control" id="name" [disabled]="type==='detail'">
+  <div class="ui-g">
+    <div class="ui-g-4">
+      <div class="form-group" >
+        <div class="ui-g-2" style="margin-top: 3%;">
+          {{ 'APP.GLOBAL.NAME' | translate}} </div>
+        <div class="ui-g-10">
+          <input type="text" autocomplete="false" placeholder="{{ 'APP.GLOBAL.NAME' | translate}}" name="name"
+            [(ngModel)]="user.name" class="form-control" id="name" [disabled]="type==='detail'">
+        </div>
       </div>
     </div>
 
-    <div class="ui-g-6 datePick">
+    <div class="ui-g-4">
       <div class="form-group">
         <mat-form-field>
           <input matInput [matDatepicker]="picker" autocomplete="false" placeholder="{{ 'APP.GLOBAL.BIRTH' | translate}}"
@@ -21,13 +24,20 @@
         </mat-form-field>
       </div>
     </div>
+    <div class="ui-g-4">
+      <button class="btn btn-primary btnMargin" [disabled]="disabledButton()" (click)="updateUser()" *ngIf="type==='update'">{{
+        'APP.EDIT-USER.CREATE' | translate}}</button>
+      <button class="btn btn-danger btnMargin" (click)="cancelForm()" *ngIf="type==='update'">{{ 'APP.EDIT-USER.CANCEL'
+        |
+        translate}}</button>
+      <button class="btn btn-warning btnMargin" (click)="resetForm()" *ngIf="type==='update'">{{ 'APP.EDIT-USER.RESET'
+        |
+        translate}}</button>
+      <button class="btn btn-danger btnMargin" (click)="cancelForm()" *ngIf="type==='detail'">{{ 'APP.EDIT-USER.BACK' |
+        translate}}</button>
+    </div>
   </div>
 
-  <button class="btn btn-primary btnMargin" [disabled]="disabledButton()" (click)="updateUser()"  *ngIf="type==='update'">{{
-    'APP.EDIT-USER.CREATE' | translate}}</button>
-  <button class="btn btn-danger btnMargin" (click)="cancelForm()" *ngIf="type==='update'">{{ 'APP.EDIT-USER.CANCEL' | translate}}</button>
-  <button class="btn btn-warning btnMargin" (click)="resetForm()" *ngIf="type==='update'">{{ 'APP.EDIT-USER.RESET' | translate}}</button>
-  <button class="btn btn-danger btnMargin" (click)="cancelForm()" *ngIf="type==='detail'">{{ 'APP.EDIT-USER.BACK' | translate}}</button>
 </ng-container>
 
 <ng-template #spinner>

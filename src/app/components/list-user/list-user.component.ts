@@ -52,7 +52,7 @@ export class ListUserComponent implements OnInit {
     this.userService.deleteUser(id).subscribe(data => {
       this.messageService.add({
         severity: 'success', summary: this.translate.instant('APP.DELETE-USER.TITLE'),
-        detail: this.translate.instant('APP.DELETE-USER.MOK') + id
+        detail: this.translate.instant('APP.DELETE-USER.MOK') + '' + id
       });
       this.getAllUsers();
     }, error => {
