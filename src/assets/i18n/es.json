@@ -1,0 +1,38 @@
+{
+    "APP": {
+        "GLOBAL": {
+            "ID": "Id",
+            "HOME": "Inicio",
+            "LANG": "Cambiar Lenguaje",
+            "NAME": "Nombre",
+            "BIRTH": "Cumpleaños",
+            "ACTION": "Accion",
+            "NEW": "Crear Usuario"
+        },
+        "LIST-USER": {
+            "TITLE": "Lista de Usuarios",
+            "TITLEPOP":" Listado de Usuarios",
+            "MOK":" Usuarios Recibidos"
+        },
+        "ADD-USER": {
+            "TITLE": "Crear Usuario",
+            "MOK":"Usuario Creado",
+            "CREATE": "Crear",
+            "CANCEL": "Cancelar",
+            "RESET": "Reiniciar"
+        },
+        "EDIT-USER": {
+            "TITLE": "Editar Usuario",
+            "CREATE": "Actualizar",
+            "MOK":"Usuario Actualizado",
+            "TITLEDETAIL": "Detalle Usuario",
+            "BACK": "Atras",
+            "CANCEL": "Cancelar",
+            "RESET": "Reiniciar"
+        },
+        "DELETE-USER":{
+            "TITLE":"Eliminar Usuario",
+            "MOK": "Usuario Eliminado"
+        }
+    }
+}

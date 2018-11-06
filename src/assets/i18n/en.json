@@ -1,0 +1,39 @@
+{
+    "APP": {
+        "GLOBAL": {
+            "ID": "Id",
+            "HOME": "Home",
+            "LANG": "Switch Language",
+            "NAME": "Name",
+            "BIRTH": "Birthdate",
+            "ACTION": "Action",
+            "NEW": "Create User"
+        },
+        "LIST-USER": {
+            "TITLE": "User List",
+            "TITLEPOP":" Get All Users",
+            "MOK":"Users Recieved"
+        },
+        "ADD-USER": {
+            "TITLE": "Add User",
+            "MOK":"User Created",
+            "CREATE": "Create",
+            "CANCEL": "Cancel",
+            "RESET": "Reset"
+        },
+        "EDIT-USER": {
+            "TITLE": "Edit User",
+            "TITLEDETAIL": "Detail User",
+            "MOK":"User Updated",
+            "BACK": "Back",
+            "CREATE": "Update",
+            "CANCEL": "Cancel",
+            "RESET": "Reset"
+        },
+        "DELETE-USER":{
+            "TITLE":"Delete User",
+            "MOK": "User Deleted"
+        }
+        
+    }
+}

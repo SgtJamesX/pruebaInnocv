@@ -1,0 +1,50 @@
+<p-toast></p-toast>
+<div class="col-md-12">
+  <h2 class="text-center"> {{ 'APP.LIST-USER.TITLE' | translate}} </h2>
+
+  <p-table #dt [columns]="cols" [value]="users" [paginator]="true" [rows]="10" *ngIf="users; else spinner">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+          {{col.header}}
+          <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+        </th>
+      </tr>
+      <tr>
+        <th *ngFor="let col of columns" [ngSwitch]="col.field">
+          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+          <input *ngSwitchCase="'id'" pInputText type="number" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+          <input *ngSwitchCase="'name'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+          <input *ngSwitchCase="'birthdate'" pInputText type="date" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns">
+          <ng-container *ngIf="col.field==='birthdate'; else elseTemplate">
+            {{rowData[col.field] | date:'mediumDate'}}
+          </ng-container>
+          <ng-template #elseTemplate>
+            {{rowData[col.field] }}
+          </ng-template>
+        </td>
+
+        <td><button class="btn btn-danger btn-xs" (click)="deleteUser(rowData.id)">
+            <span><i class="fa fa-trash"></i></span></button>
+          <button class="btnMargin btn btn-primary btn-xs" (click)="editUser(rowData.id)">
+            <span><i class="fa fa-pencil"></i></span></button>
+          <button class="btnMargin btn btn-info btn-xs" (click)="detailUser(rowData.id)">
+            <span><i class="fa fa-search"></i></span></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>
+
+<ng-template #spinner>
+  <div class="col-sm-12 spinnerAllign">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

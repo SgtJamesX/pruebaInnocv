@@ -1,0 +1,30 @@
+<p-toast></p-toast>
+<h2 class="text-center">{{ 'APP.ADD-USER.TITLE' | translate}}</h2>
+<ng-container >
+    <div class="ui-g">
+        <div class="ui-g-4">
+      <div class="form-group">
+        <label for="name">{{ 'APP.GLOBAL.NAME' | translate}}</label>
+        <input type="text" autocomplete="false" placeholder="{{ 'APP.GLOBAL.NAME' | translate}}" name="name"
+          [(ngModel)]="user.name" class="form-control" id="name" required>
+      </div>
+    </div>
+    <div class="ui-g-6 datePick">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" autocomplete="false" placeholder="{{ 'APP.GLOBAL.BIRTH' | translate}}"
+            [(ngModel)]="user.birthdate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary btnMargin" [disabled]="disabledButton()" (click)="createUser()">{{
+    'APP.ADD-USER.CREATE' | translate}}</button>
+  <button class="btn btn-danger btnMargin" (click)="cancelForm()">{{ 'APP.ADD-USER.CANCEL' | translate}}</button>
+  <button class="btn btn-warning btnMargin" (click)="resetForm()">{{ 'APP.ADD-USER.RESET' | translate}}</button>
+
+</ng-container>
+
