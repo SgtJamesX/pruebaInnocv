@@ -30,7 +30,7 @@
           </ng-template>
         </td>
 
-        <td><button class="btn btn-danger btn-xs" (click)="deleteUser(rowData.id)">
+        <td><button class="btn btn-danger btn-xs" (click)="confirm(rowData.id)">
             <span><i class="fa fa-trash"></i></span></button>
           <button class="btnMargin btn btn-primary btn-xs" (click)="editUser(rowData.id)">
             <span><i class="fa fa-pencil"></i></span></button>
@@ -42,6 +42,8 @@
   </p-table>
 
 </div>
+
+<p-confirmDialog header="{{ 'APP.DELETE-USER.TITLE' | translate}}" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>
 
 <ng-template #spinner>
   <div class="col-sm-12 spinnerAllign">

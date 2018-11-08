@@ -32,7 +32,8 @@
         },
         "DELETE-USER":{
             "TITLE":"Delete User",
-            "MOK": "User Deleted"
+            "MOK": "User Deleted",
+            "CONFIRM":"Are you sure that you want to delete the user"
         }
         
     }

@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../interfaces/user';
-import { UserServiceService } from '../../services/user-service.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { TranslateService } from '@ngx-translate/core';
+import { User } from '../../interfaces/user';
 
 @Component({
-  selector: 'app-list-user',
-  templateUrl: './list-user.component.html',
-  styleUrls: ['./list-user.component.sass']
+  selector: 'CRUD-list-users',
+  templateUrl: './list-users.component.html',
+  styleUrls: ['./list-users.component.css']
 })
-export class ListUserComponent implements OnInit {
+export class ListUsersComponent implements OnInit {
   users: User[];
   cols: any[];
 
-  constructor(private userService: UserServiceService, private router: Router, private messageService: MessageService,
+  constructor(private confirmationService: ConfirmationService,
+    private userService: UserService, private router: Router, private messageService: MessageService,
     private translate: TranslateService) { }
 
 
@@ -61,13 +62,27 @@ export class ListUserComponent implements OnInit {
   }
 
   /**
+   * Shows a Confirmation Dialog
+   */
+  confirm(id: number) {
+    this.confirmationService.confirm({
+      message: this.translate.instant('APP.DELETE-USER.CONFIRM') + ' ' + id + '?',
+      accept: () => {
+        this.deleteUser(id);
+      }
+    });
+  }
+
+  /**
    * Get all users from the service
    */
   getAllUsers(): void {
     this.userService.getUsers().subscribe(data => {
       this.users = data;
-      this.messageService.add({ severity: 'success', summary: this.translate.instant('APP.LIST-USER.TITLEPOP'),
-       detail: this.translate.instant('APP.LIST-USER.MOK') });
+      this.messageService.add({
+        severity: 'success', summary: this.translate.instant('APP.LIST-USER.TITLEPOP'),
+        detail: this.translate.instant('APP.LIST-USER.MOK')
+      });
     }, error => {
       this.messageService.add({ severity: 'error', summary: this.translate.instant('APP.LIST-USER.TITLEPOP'), detail: error.message });
     });

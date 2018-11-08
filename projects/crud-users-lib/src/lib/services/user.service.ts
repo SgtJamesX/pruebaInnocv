@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User, CreateUser } from '../interfaces/user';
 import { Observable } from 'rxjs';
 
+
 const headers = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -13,7 +14,7 @@ const headers = {
 @Injectable({
   providedIn: 'root'
 })
-export class UserServiceService {
+export class UserService {
 
   /**
    * Api url

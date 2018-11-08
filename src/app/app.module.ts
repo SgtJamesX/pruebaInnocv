@@ -6,19 +6,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddUserComponent } from './components/add-user/add-user.component';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { ListUserComponent } from './components/list-user/list-user.component';
-
-import { UserServiceService } from './services/user-service.service';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MaterialModule} from './material.module';
-import {PrimeNgModule} from './prime-ng.module';
-import { MessageService } from 'primeng/api';
+import {CrudUsersLibModule} from 'crud-users-lib';
+import {NavBarComponent} from 'top-bar-lib';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -28,12 +22,9 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    AddUserComponent,
-    EditUserComponent,
-    ListUserComponent
+    NavBarComponent
   ],
   imports: [
-    MaterialModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -41,15 +32,14 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    CrudUsersLibModule,
     FormsModule,
-    PrimeNgModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [UserServiceService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

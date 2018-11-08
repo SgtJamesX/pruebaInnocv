@@ -1,5 +1,6 @@
 <p-toast></p-toast>
 <h2 class="text-center" *ngIf="type==='update'">{{ 'APP.EDIT-USER.TITLE' | translate}}</h2>
+<h2 class="text-center" *ngIf="type==='create'">{{ 'APP.ADD-USER.TITLE' | translate}}</h2>
 <h2 class="text-center" *ngIf="type==='detail'">{{ 'APP.EDIT-USER.TITLEDETAIL' | translate}}</h2>
 <ng-container *ngIf="user; else spinner">
   <div class="ui-g">
@@ -25,12 +26,15 @@
       </div>
     </div>
     <div class="ui-g-4">
+        <button class="btn btn-primary btnMargin" [disabled]="disabledButton()" (click)="createUser()" *ngIf="type==='create'">
+          {{'APP.ADD-USER.CREATE' | translate}}</button>
+
       <button class="btn btn-primary btnMargin" [disabled]="disabledButton()" (click)="updateUser()" *ngIf="type==='update'">{{
         'APP.EDIT-USER.CREATE' | translate}}</button>
-      <button class="btn btn-danger btnMargin" (click)="cancelForm()" *ngIf="type==='update'">{{ 'APP.EDIT-USER.CANCEL'
+      <button class="btn btn-danger btnMargin" (click)="cancelForm()" *ngIf="type==='update' || type==='create'">{{ 'APP.EDIT-USER.CANCEL'
         |
         translate}}</button>
-      <button class="btn btn-warning btnMargin" (click)="resetForm()" *ngIf="type==='update'">{{ 'APP.EDIT-USER.RESET'
+      <button class="btn btn-warning btnMargin" (click)="resetForm()" *ngIf="type==='update' || type==='create'">{{ 'APP.EDIT-USER.RESET'
         |
         translate}}</button>
       <button class="btn btn-danger btnMargin" (click)="cancelForm()" *ngIf="type==='detail'">{{ 'APP.EDIT-USER.BACK' |

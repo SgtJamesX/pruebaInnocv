@@ -1,7 +1,3 @@
-<nav class="navbar navbar-dark bg-dark">
-
-    <button class="btn btn-primary" (click)="goHome()"> <span><i class="fa fa-globe"></i></span> {{ 'APP.GLOBAL.HOME' | translate}}</button>
-    <button class="btn btn-primary" (click)="switchLanguage()" style="margin-left: 3%;"> <span><i class="fa fa-language"></i></span> {{ 'APP.GLOBAL.LANG' | translate}}</button>
-    <button class="btn btn-primary" (click)="addUser()"> <span><i class="fa fa-user"></i></span> {{ 'APP.GLOBAL.NEW'| translate}}</button>
-</nav>
+<TOP-nav-bar></TOP-nav-bar>
 <router-outlet></router-outlet>
+
