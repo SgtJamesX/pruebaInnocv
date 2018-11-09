@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const ENDPOINT_ROUTE = './assets/endpoints.json';
+const ENDPOINT_ROUTE = './assets//endpoints/endpoints.json';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +14,8 @@ export class EndpointService {
   }
 
   /**
-   * Init the endpointService
-   *
+   * Init the endpointService, wait until the endpoint promise is resolved
    */
-
   async init() {
     await this.getJSON().then(data => {
       this.endpoints = data;

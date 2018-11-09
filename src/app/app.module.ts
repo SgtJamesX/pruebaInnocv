@@ -12,7 +12,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CrudUsersLibModule } from 'crud-users-lib';
-import { EndpointLibModule, EndpointService } from 'endpoint-lib';
+import { EndpointService } from 'endpoint-lib';
 import { NavBarComponent } from 'top-bar-lib';
 
 // AoT requires an exported function for factories
