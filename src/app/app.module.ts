@@ -20,6 +20,7 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+// Initialize the enpoint service loading the enpoint.json from the system.
 export function init_app(firstLoadService: EndpointService) {
   return () => firstLoadService.init();
 }
