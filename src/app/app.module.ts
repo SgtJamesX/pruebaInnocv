@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -11,12 +11,17 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {CrudUsersLibModule} from 'crud-users-lib';
-import {NavBarComponent} from 'top-bar-lib';
+import { CrudUsersLibModule } from 'crud-users-lib';
+import { EndpointLibModule, EndpointService } from 'endpoint-lib';
+import { NavBarComponent } from 'top-bar-lib';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+export function init_app(firstLoadService: EndpointService) {
+  return () => firstLoadService.init();
 }
 
 @NgModule({
@@ -40,6 +45,8 @@ export function createTranslateLoader(http: HttpClient) {
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
+  providers: [EndpointService,
+    { provide: APP_INITIALIZER, useFactory: init_app, deps: [EndpointService], multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

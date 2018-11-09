@@ -29,6 +29,12 @@
       ],
       "top-bar-lib/*": [
         "dist/top-bar-lib/*"
+      ],
+      "endpoint-lib": [
+        "dist/endpoint-lib"
+      ],
+      "endpoint-lib/*": [
+        "dist/endpoint-lib/*"
       ]
     }
   }

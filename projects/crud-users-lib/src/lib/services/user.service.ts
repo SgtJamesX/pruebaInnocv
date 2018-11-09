@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User, CreateUser } from '../interfaces/user';
 import { Observable } from 'rxjs';
+import { EndpointService } from 'endpoint-lib';
 
+const KEY_USER = 'ROUTE-USER';
 
 const headers = {
   headers: new HttpHeaders({
@@ -19,11 +21,18 @@ export class UserService {
   /**
    * Api url
    */
-  baseUrl = 'https://hello-world.innocv.com/api/User';
+  baseUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private endpointService: EndpointService) {
+    this.init();
+  }
 
-
+  /**
+   * Init the base Url
+   */
+  init(): void {
+    this.baseUrl = this.endpointService.getRoute(KEY_USER);
+  }
   /**
    * Get all the users from the back
    */
